@@ -1,3 +1,8 @@
+import { useContext } from 'react';
+
+//components
+import LoginContext from '../store/login-context';
+
 //custom hooks
 import useInput from '../hooks/use-input';
 
@@ -16,14 +21,13 @@ import {
   Input,
   Text,
   Button,
-  FormErrorMessage,
 } from '@chakra-ui/react';
 
 const usernameValidation = (value) => value.trim() !== '';
 const passwordValidation = (value) =>
   value.includes('@' || '#' || '$' || '%' || '&' || '*');
 
-function LoginForm() {
+const LoginForm = () => {
   const {
     value: username,
     isValid: usernameIsValid,
@@ -42,6 +46,8 @@ function LoginForm() {
     reset: resetPassword,
   } = useInput(passwordValidation);
 
+  const ctx = useContext(LoginContext);
+
   let formIsValid = false;
 
   if (usernameIsValid && passwordIsValid) {
@@ -57,6 +63,7 @@ function LoginForm() {
 
     resetUsername();
     resetPassword();
+    ctx.onLogin();
   };
 
   const fontColor = '#21325E';
@@ -132,6 +139,6 @@ function LoginForm() {
       </GridItem>
     </SimpleGrid>
   );
-}
+};
 
 export default LoginForm;
