@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "pokemon": "Bulbasaur",
     "HP": "45",
     "ATK": "49",
@@ -7,6 +8,7 @@
     "Type": "Grass"
   },
   {
+    "id": 2,
     "pokemon": "Charmander",
     "HP": "39",
     "ATK": "52",
@@ -14,6 +16,7 @@
     "Type": "Fire"
   },
   {
+    "id": 3,
     "pokemon": "Squirtle",
     "HP": "44",
     "ATK": "48",
@@ -21,6 +24,7 @@
     "Type": "Water"
   },
   {
+    "id": 4,
     "pokemon": "Pidgey",
     "HP": "40",
     "ATK": "45",
@@ -28,6 +32,7 @@
     "Type": "Normal"
   },
   {
+    "id": 5,
     "pokemon": "Rattata",
     "HP": "30",
     "ATK": "56",
@@ -35,6 +40,7 @@
     "Type": "Normal"
   },
   {
+    "id": 6,
     "pokemon": "Pikachu",
     "HP": "35",
     "ATK": "55",
@@ -42,6 +48,7 @@
     "Type": "Electric"
   },
   {
+    "id": 7,
     "pokemon": "Jigglypuff",
     "HP": "115",
     "ATK": "45",
@@ -49,6 +56,7 @@
     "Type": "Normal"
   },
   {
+    "id": 8,
     "pokemon": "Diglett",
     "HP": "10",
     "ATK": "55",
@@ -56,6 +64,7 @@
     "Type": "Ground"
   },
   {
+    "id": 9,
     "pokemon": "Machop",
     "HP": "70",
     "ATK": "80",
@@ -63,6 +72,7 @@
     "Type": "Fighting"
   },
   {
+    "id": 10,
     "pokemon": "Tentacool",
     "HP": "40",
     "ATK": "40",
@@ -70,6 +80,7 @@
     "Type": "Water"
   },
   {
+    "id": 11,
     "pokemon": "Geodude",
     "HP": "40",
     "ATK": "80",
@@ -77,6 +88,7 @@
     "Type": "Rock"
   },
   {
+    "id": 12,
     "pokemon": "Slowpoke",
     "HP": "90",
     "ATK": "65",
@@ -84,6 +96,7 @@
     "Type": "Water"
   },
   {
+    "id": 13,
     "pokemon": "Magnemite",
     "HP": "25",
     "ATK": "35",
@@ -91,6 +104,7 @@
     "Type": "Electric"
   },
   {
+    "id": 14,
     "pokemon": "Hitmonlee",
     "HP": "50",
     "ATK": "120",
@@ -98,6 +112,7 @@
     "Type": "Fighting"
   },
   {
+    "id": 15,
     "pokemon": "Chansey",
     "HP": "250",
     "ATK": "5",
@@ -105,6 +120,7 @@
     "Type": "Normal"
   },
   {
+    "id": 16,
     "pokemon": "Mr. Mime",
     "HP": "40",
     "ATK": "45",

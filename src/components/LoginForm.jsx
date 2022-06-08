@@ -134,6 +134,7 @@ const LoginForm = () => {
                 size='lg'
                 variant='solid'
                 bgColor='#21325E'
+                color='white'
                 my={10}
                 isDisabled={!usernameIsValid || !passwordIsValid}
               >
