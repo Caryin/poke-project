@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 //components
 import LoginForm from './components/LoginForm';
@@ -7,23 +7,27 @@ import Dashboard from './components/Dashboard';
 //store
 import LoginContext from './store/login-context';
 
-//chakraUI
-import { Container, Flex } from '@chakra-ui/react';
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    const value = localStorage.getItem('authentication');
+
+    const parsedValue = JSON.parse(value);
+
+    if (parsedValue && parsedValue.isLoggedIn) {
+      setIsLoggedIn(true);
+    }
+  }, [isLoggedIn]);
+
   const loginHandler = () => {
     setIsLoggedIn(true);
-  };
+    localStorage.setItem(
+      'authentication',
 
-  const login = (
-    <Container maxW='container.lg'>
-      <Flex>
-        <LoginForm />
-      </Flex>
-    </Container>
-  );
+      JSON.stringify({ isLoggedIn: true })
+    );
+  };
 
   return (
     <LoginContext.Provider
@@ -32,7 +36,7 @@ function App() {
         onLogin: loginHandler,
       }}
     >
-      {isLoggedIn ? <Dashboard /> : login}
+      {isLoggedIn ? <Dashboard /> : <LoginForm />}
     </LoginContext.Provider>
   );
 }
