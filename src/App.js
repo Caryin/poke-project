@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 //components
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
+import CatchPokemon from './components/CatchPokemon';
 
 //store
 import LoginContext from './store/login-context';
@@ -36,7 +37,7 @@ function App() {
         onLogin: loginHandler,
       }}
     >
-      {isLoggedIn ? <Dashboard /> : <LoginForm />}
+      {isLoggedIn ? <CatchPokemon /> : <LoginForm />}
     </LoginContext.Provider>
   );
 }

@@ -10,7 +10,7 @@ import pokemonLogo from '../assets/pokemon-logo.png';
 import pokemonData from '../store/pokemon.json';
 import DashboardItem from './DashboardItem';
 
-const Dashboard = () => {
+const CatchPokemon = () => {
   const [pokemons, setPokemons] = useState(pokemonData);
 
   const handleRemove = (id) => {
@@ -41,4 +41,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default CatchPokemon;

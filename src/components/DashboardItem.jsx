@@ -1,18 +1,18 @@
 import { Box, CloseButton, Heading, Spacer, Text } from '@chakra-ui/react';
 
-const DashboardItem = (props) => {
+const DashboardItem = ({ data, handleRemove }) => {
   return (
     <Box maxW='full' bg='blue.200' rounded={20} border='1px' w={80} p='6'>
       <Box>
         <Box display='flex'>
-          <Heading>{props.name}</Heading>
+          <Heading>{data.pokemon}</Heading>
           <Spacer />
-          <CloseButton onClick={() => props.handleRemove(props.id)} />
+          <CloseButton onClick={() => handleRemove(data.id)} />
         </Box>
-        <Text>Attack: {props.atk}</Text>
-        <Text>HP: {props.hp}</Text>
-        <Text>SP: {props.sp}</Text>
-        <Text>Type: {props.type}</Text>
+        <Text>Attack: {data.ATK}</Text>
+        <Text>HP: {data.HP}</Text>
+        <Text>SP: {data.SP}</Text>
+        <Text>Type: {data.Type}</Text>
       </Box>
     </Box>
   );
