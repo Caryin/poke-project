@@ -1,13 +1,13 @@
 import { Box, CloseButton, Heading, Spacer, Text } from '@chakra-ui/react';
 
-const DashboardItem = ({ data, handleRemove }) => {
+const DashboardItem = ({ data, releasePokemon }) => {
   return (
     <Box maxW='full' bg='blue.200' rounded={20} border='1px' w={80} p='6'>
       <Box>
         <Box display='flex'>
           <Heading>{data.pokemon}</Heading>
           <Spacer />
-          <CloseButton onClick={() => handleRemove(data.id)} />
+          <CloseButton onClick={() => releasePokemon(data.id)} />
         </Box>
         <Text>Attack: {data.ATK}</Text>
         <Text>HP: {data.HP}</Text>

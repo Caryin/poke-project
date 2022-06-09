@@ -1,42 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //chakraUI
-import { Container, Image, Text, VStack } from '@chakra-ui/react';
-
-//asset
-import pokemonLogo from '../assets/pokemon-logo.png';
+import { Container, Heading, Button } from '@chakra-ui/react';
 
 //store
 import pokemonData from '../store/pokemon.json';
-import DashboardItem from './DashboardItem';
 
 const CatchPokemon = () => {
-  const [pokemons, setPokemons] = useState(pokemonData);
+  const [catchPokemon, setCatchPokemon] = useState([]);
 
-  const handleRemove = (id) => {
-    const newPokemons = pokemons.filter((pokemon) => pokemon.id !== id);
-    setPokemons(newPokemons);
+  const fetchPokemon = () => {
+    const randomPokemon = Math.floor(Math.random() * pokemonData.length);
+    setCatchPokemon(pokemonData[randomPokemon].pokemon);
   };
+
+  useEffect(() => {
+    fetchPokemon();
+  }, []);
+
+  const catchHandler = () => {};
 
   return (
     <Container maxW='container.lg'>
-      <VStack>
-        <Image src={pokemonLogo} alt='pokemon logo' w='200px' h='80px' m={4} />
-      </VStack>
-      <VStack>
-        <Text fontSize='2xl' p={4}>
-          You've Got
-        </Text>
-      </VStack>
-      <VStack spacing='10px'>
-        {pokemons.map((pokemon) => (
-          <DashboardItem
-            key={pokemon.id}
-            data={pokemon}
-            handleRemove={handleRemove}
-          />
-        ))}
-      </VStack>
+      <Heading>{catchPokemon}</Heading>
+      <Button onClick={catchHandler}>Catch</Button>
     </Container>
   );
 };

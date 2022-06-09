@@ -1,14 +1,11 @@
-import { useState, useEffect } from 'react';
-
-//components
-import LoginForm from './components/LoginForm';
-import Dashboard from './components/Dashboard';
-import CatchPokemon from './components/CatchPokemon';
-
+import { HStack } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import MyPokemons from './components/MyPokemons';
+import WildPokemons from './components/WildPokemons';
 //store
 import LoginContext from './store/login-context';
 
-function App() {
+const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -37,9 +34,13 @@ function App() {
         onLogin: loginHandler,
       }}
     >
-      {isLoggedIn ? <CatchPokemon /> : <LoginForm />}
+      {/* {isLoggedIn ? <Dashboard /> : <LoginForm />} */}
+      <HStack>
+        <MyPokemons />
+        <WildPokemons />
+      </HStack>
     </LoginContext.Provider>
   );
-}
+};
 
 export default App;

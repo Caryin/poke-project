@@ -1,29 +1,22 @@
 import { useContext } from 'react';
 
-//components
-import LoginContext from '../store/login-context';
-
-//custom hooks
-import useInput from '../hooks/use-input';
-
-//assets
-import loginImage from '../assets/loginImage.png';
-
 //chakraUI
 import {
-  SimpleGrid,
-  GridItem,
-  AspectRatio,
-  Image,
-  Heading,
-  FormControl,
-  FormLabel,
-  Input,
-  Text,
   Button,
   Container,
   Flex,
+  FormLabel,
+  GridItem,
+  Heading,
+  Input,
+  SimpleGrid,
+  Text,
 } from '@chakra-ui/react';
+
+//custom hooks
+import useInput from '../hooks/use-input';
+//components
+import LoginContext from '../store/login-context';
 
 const usernameValidation = (value) => value.trim() !== '';
 const passwordValidation = (value) =>
