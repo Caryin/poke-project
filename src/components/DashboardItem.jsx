@@ -1,23 +1,41 @@
-import { Box, CloseButton, Heading, Spacer, Text } from '@chakra-ui/react';
+import {
+  Box,
+  CloseButton,
+  Fade,
+  Heading,
+  Spacer,
+  Text,
+  useBreakpointValue,
+  VStack,
+} from '@chakra-ui/react';
 import { usePokemon } from '../store/pokemon-context';
 
 const DashboardItem = ({ data }) => {
   const { releasePokemon } = usePokemon();
 
   return (
-    <Box maxW='full' bg='blue.200' rounded={20} border='1px' w={80} p='6'>
-      <Box>
-        <Box display='flex'>
-          <Heading>{data.pokemon}</Heading>
-          <Spacer />
-          <CloseButton onClick={() => releasePokemon(data.id)} />
-        </Box>
+    <VStack
+      bg='blue.200'
+      rounded={24}
+      borderWidth={3}
+      borderColor='gray.500'
+      p={4}
+      position='relative'
+    >
+      <Heading size='2xl'>{data.pokemon}</Heading>
+      <CloseButton
+        position='absolute'
+        right={0}
+        top={-2}
+        onClick={() => releasePokemon(data.id)}
+      />
+      <VStack spacing={0} mt={4}>
         <Text>Attack: {data.ATK}</Text>
         <Text>HP: {data.HP}</Text>
         <Text>SP: {data.SP}</Text>
         <Text>Type: {data.Type}</Text>
-      </Box>
-    </Box>
+      </VStack>
+    </VStack>
   );
 };
 

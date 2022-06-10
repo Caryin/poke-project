@@ -1,21 +1,21 @@
-import { useContext } from 'react';
-
-//chakraUI
 import {
+  AspectRatio,
   Button,
   Container,
   Flex,
   FormLabel,
   GridItem,
   Heading,
+  Image,
   Input,
   SimpleGrid,
   Text,
+  Box,
+  FormControl,
 } from '@chakra-ui/react';
-
-//custom hooks
-import { useInput } from '../store/use-input';
+import loginImage from '../assets/loginImage.png';
 import { useLogin } from '../store/login-context';
+import { useInput } from '../store/use-input';
 
 const usernameValidation = (value) => value.trim() !== '';
 const passwordValidation = (value) =>
@@ -59,81 +59,68 @@ const LoginForm = () => {
     loginHandler();
   };
 
-  const fontColor = '#21325E';
-
   return (
     <Container maxW='container.lg'>
-      <Flex>
-        <SimpleGrid
-          w='full'
-          alignContent='center'
-          columns={2}
-          columnGap={10}
-          bg='blue.200'
-          borderRadius='lg'
-          mt='60px'
-        >
-          <GridItem>
-            {/* <AspectRatio ratio={3 / 4}>
-          <Image src={loginImage} />
-        </AspectRatio> */}
-          </GridItem>
+      <Flex bg='#3B4CCA' borderRadius='30' mt={10}>
+        <AspectRatio ratio={3 / 4} flex={0.8}>
+          <Image src={loginImage} borderRadius='30' borderRightRadius={0} />
+        </AspectRatio>
 
-          <GridItem pr={6}>
-            <form onSubmit={submitHandler}>
-              <Heading py={4} color={fontColor}>
-                Login
-              </Heading>
-              <FormLabel htmlFor='username' color={fontColor}>
-                Username:
-              </FormLabel>
-              <Input
-                id='username'
-                type='text'
-                color={fontColor}
-                bg='white'
-                value={username}
-                onChange={usernameChangeHandler}
-                onBlur={usernameBlurHandler}
-              />
-              {usernameHasError && (
-                <Text p={2} color='red'>
-                  Please enter a valid username.{' '}
-                </Text>
-              )}
-              <FormLabel htmlFor='password' color={fontColor}>
-                Password:
-              </FormLabel>
-              <Input
-                id='password'
-                type='password'
-                color={fontColor}
-                value={password}
-                bg='white'
-                onChange={passwordChangeHandler}
-                onBlur={passwordBlurHandler}
-              />
-              {passwordHasError && (
-                <Text p={2} color='red'>
-                  Password must contain at least 1 special character (@, #, $,
-                  %, &, *).
-                </Text>
-              )}
-              <Button
-                type='submit'
-                w='full'
-                size='lg'
-                variant='solid'
-                bgColor='#21325E'
-                color='white'
-                my={10}
-                isDisabled={!usernameIsValid || !passwordIsValid}
-              >
-                Let's catch
-              </Button>
-            </form>
-          </GridItem>
-        </SimpleGrid>
+        <Box flex={1} px={4} borderRightRadius={0}>
+          <form onSubmit={submitHandler}>
+            <Heading py={8} mt={16} color='#FFDE00' size='2xl'>
+              Login
+            </Heading>
+            <FormLabel htmlFor='username' color='white' fontSize='lg'>
+              Username:
+            </FormLabel>
+            <Input
+              id='username'
+              type='text'
+              color='grey.700'
+              bg='white'
+              value={username}
+              onChange={usernameChangeHandler}
+              onBlur={usernameBlurHandler}
+              size='lg'
+            />
+            {usernameHasError && (
+              <Text p={2} color='red'>
+                Please enter a valid username.{' '}
+              </Text>
+            )}
+
+            <FormLabel htmlFor='password' color='white' fontSize='lg'>
+              Password:
+            </FormLabel>
+            <Input
+              id='password'
+              type='password'
+              color='grey.700'
+              value={password}
+              bg='white'
+              onChange={passwordChangeHandler}
+              onBlur={passwordBlurHandler}
+              size='lg'
+            />
+            {passwordHasError && (
+              <Text p={2} color='red'>
+                Password must contain at least 1 special character (@, #, $, %,
+                &, *).
+              </Text>
+            )}
+            <Button
+              type='submit'
+              w='full'
+              size='lg'
+              colorScheme='red'
+              my={10}
+              isDisabled={!usernameIsValid || !passwordIsValid}
+            >
+              Let's catch
+            </Button>
+          </form>
+        </Box>
       </Flex>
     </Container>
   );
