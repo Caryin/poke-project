@@ -3,17 +3,7 @@ import { Button, Container, Heading, Text, VStack } from '@chakra-ui/react';
 import { usePokemon } from '../store/pokemon-context';
 
 const WildPokemons = () => {
-  const { wildPokemons, setWildPokemons, setMyPokemons } = usePokemon();
-
-  const catchPokemon = (id) => {
-    const newWildPokemons = wildPokemons.filter((p) => p.id !== id);
-
-    setWildPokemons(newWildPokemons);
-
-    const addPokemon = wildPokemons.find((p) => p.id === id);
-
-    setMyPokemons((prev) => [...prev, addPokemon]);
-  };
+  const { wildPokemons, catchPokemon } = usePokemon();
 
   return (
     <Container maxW='container.lg'>

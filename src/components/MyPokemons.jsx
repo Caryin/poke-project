@@ -3,17 +3,7 @@ import { usePokemon } from '../store/pokemon-context';
 import DashboardItem from './DashboardItem';
 
 const MyPokemons = () => {
-  const { setWildPokemons, myPokemons, setMyPokemons } = usePokemon();
-
-  const releasePokemon = (id) => {
-    const newMyPokemons = myPokemons.filter((p) => p.id !== id);
-
-    setMyPokemons(newMyPokemons);
-
-    const removePokemon = myPokemons.find((p) => p.id === id);
-
-    setWildPokemons((prev) => [...prev, removePokemon]);
-  };
+  const { myPokemons } = usePokemon();
 
   return (
     <Container maxW='container.lg'>
@@ -24,11 +14,7 @@ const MyPokemons = () => {
       </VStack>
       <VStack spacing='10px'>
         {myPokemons.map((pokemon) => (
-          <DashboardItem
-            key={pokemon.id}
-            data={pokemon}
-            releasePokemon={releasePokemon}
-          />
+          <DashboardItem key={pokemon.id} data={pokemon} />
         ))}
       </VStack>
     </Container>

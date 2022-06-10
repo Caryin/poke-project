@@ -1,6 +1,9 @@
 import { Box, CloseButton, Heading, Spacer, Text } from '@chakra-ui/react';
+import { usePokemon } from '../store/pokemon-context';
 
-const DashboardItem = ({ data, releasePokemon }) => {
+const DashboardItem = ({ data }) => {
+  const { releasePokemon } = usePokemon();
+
   return (
     <Box maxW='full' bg='blue.200' rounded={20} border='1px' w={80} p='6'>
       <Box>
