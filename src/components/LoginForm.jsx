@@ -14,15 +14,15 @@ import {
 } from '@chakra-ui/react';
 
 //custom hooks
-import useInput from '../hooks/use-input';
-//components
-import LoginContext from '../store/login-context';
+import { useInput } from '../store/use-input';
+import { useLogin } from '../store/login-context';
 
 const usernameValidation = (value) => value.trim() !== '';
 const passwordValidation = (value) =>
   value.includes('@' || '#' || '$' || '%' || '&' || '*');
 
 const LoginForm = () => {
+  const { loginHandler } = useLogin();
   const {
     value: username,
     isValid: usernameIsValid,
@@ -41,8 +41,6 @@ const LoginForm = () => {
     reset: resetPassword,
   } = useInput(passwordValidation);
 
-  const ctx = useContext(LoginContext);
-
   let formIsValid = false;
 
   if (usernameIsValid && passwordIsValid) {
@@ -58,7 +56,7 @@ const LoginForm = () => {
 
     resetUsername();
     resetPassword();
-    ctx.onLogin();
+    loginHandler();
   };
 
   const fontColor = '#21325E';

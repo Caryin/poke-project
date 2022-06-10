@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useInput = (validateValue) => {
+export const useInput = (validateValue) => {
   const [enteredValue, setEnteredValue] = useState('');
   const [isTouched, setIsTouched] = useState(false);
 
@@ -29,5 +29,3 @@ const useInput = (validateValue) => {
     reset,
   };
 };
-
-export default useInput;

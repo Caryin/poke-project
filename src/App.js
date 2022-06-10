@@ -1,5 +1,6 @@
 import { HStack } from '@chakra-ui/react';
 import { useEffect } from 'react';
+import LoginForm from './components/LoginForm';
 import MyPokemons from './components/MyPokemons';
 import WildPokemons from './components/WildPokemons';
 //store
@@ -20,11 +21,14 @@ const App = () => {
 
   return (
     <>
-      {/* {isLoggedIn ? <Dashboard /> : <LoginForm />} */}
-      <HStack>
-        <MyPokemons />
-        <WildPokemons />
-      </HStack>
+      {isLoggedIn ? (
+        <HStack>
+          <MyPokemons />
+          <WildPokemons />
+        </HStack>
+      ) : (
+        <LoginForm />
+      )}
     </>
   );
 };
