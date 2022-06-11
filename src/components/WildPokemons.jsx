@@ -1,5 +1,5 @@
 import { Heading, Text, VStack } from '@chakra-ui/react';
-import { usePokemon } from '../store/pokemon-context';
+import { usePokemon } from '../contexts/pokemon-context';
 
 const WildPokemons = () => {
   const { wildPokemons } = usePokemon();

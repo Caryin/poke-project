@@ -1,7 +1,7 @@
 import { CloseButton, Heading, Text, VStack } from '@chakra-ui/react';
-import { usePokemon } from '../store/pokemon-context';
+import { usePokemon } from '../contexts/pokemon-context';
 
-const DashboardItem = ({ data }) => {
+const PokemonCard = ({ data }) => {
   const { releasePokemon } = usePokemon();
 
   return (
@@ -30,4 +30,4 @@ const DashboardItem = ({ data }) => {
   );
 };
 
-export default DashboardItem;
+export default PokemonCard;

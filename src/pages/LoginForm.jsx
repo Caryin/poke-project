@@ -11,8 +11,8 @@ import {
   Text,
 } from '@chakra-ui/react';
 import loginImage from '../assets/loginImage.png';
-import { useLogin } from '../store/login-context';
-import { useInput } from '../store/use-input';
+import { useLogin } from '../contexts/login-context';
+import { useInput } from '../contexts/use-input';
 
 const usernameValidation = (value) => value.trim() !== '';
 const passwordValidation = (value) =>

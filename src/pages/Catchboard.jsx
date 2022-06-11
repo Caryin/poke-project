@@ -9,14 +9,13 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { usePokemon } from '../store/pokemon-context';
-import GuessGameModal from './guessGame/GuessGameModal';
+import { usePokemon } from '../contexts/pokemon-context';
+import MainModal from '../components/guess-game/MainModal';
 
 const Catchboard = () => {
   const { wildPokemons, catchPokemon, getRandomPokemon } = usePokemon();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   const [appear, setAppear] = useState({});
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
   const makeNewAppear = () => {
@@ -38,6 +37,7 @@ const Catchboard = () => {
       title: `Caught ${appear.pokemon} `,
       description: `You have caught a new pokemon.`,
       status: 'success',
+
       duration: 7000,
       isClosable: true,
     });
@@ -46,7 +46,7 @@ const Catchboard = () => {
 
   return (
     <>
-      <GuessGameModal
+      <MainModal
         isOpen={isOpen}
         onClose={onClose}
         guessGameSuccessful={guessGameSuccessful}

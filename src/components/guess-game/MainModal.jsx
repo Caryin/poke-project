@@ -8,11 +8,12 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 
-import PlayGuessGame from './PlayGuessGame';
-import SelectGameLevel from './SelectGameLevel';
+import GameModal from './GameModal';
+import GameSettingModal from './GameSettingModal';
 
-const GuessGameModal = ({ isOpen, onClose, guessGameSuccessful }) => {
+const MainModal = ({ isOpen, onClose, guessGameSuccessful }) => {
   const [startGame, setStartGame] = useState(false);
+  const [gameLevel, setGameLevel] = useState('medium');
 
   const startGameHandler = () => {
     setStartGame(true);
@@ -27,7 +28,7 @@ const GuessGameModal = ({ isOpen, onClose, guessGameSuccessful }) => {
           setStartGame(false);
         }}
         isOpen={isOpen}
-        motionPreset='slidInBottom'
+        motionPreset='slideInBottom'
       >
         <ModalOverlay />
         <ModalContent>
@@ -35,14 +36,17 @@ const GuessGameModal = ({ isOpen, onClose, guessGameSuccessful }) => {
           <ModalCloseButton />
           <ModalBody>
             {!startGame ? (
-              <SelectGameLevel
+              <GameSettingModal
                 startGame={startGame}
                 startGameHandler={startGameHandler}
+                gameLevel={gameLevel}
+                setGameLevel={setGameLevel}
               />
             ) : (
-              <PlayGuessGame
+              <GameModal
                 guessGameSuccessful={guessGameSuccessful}
                 onClose={onClose}
+                gameLevel={gameLevel}
               />
             )}
           </ModalBody>
@@ -52,4 +56,4 @@ const GuessGameModal = ({ isOpen, onClose, guessGameSuccessful }) => {
   );
 };
 
-export default GuessGameModal;
+export default MainModal;

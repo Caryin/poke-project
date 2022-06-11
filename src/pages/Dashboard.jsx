@@ -1,9 +1,7 @@
 import { Flex, Image, useBreakpointValue, VStack } from '@chakra-ui/react';
-
 import pokemonLogo from '../assets/pokemon-logo.png';
-
-import MyPokemons from './MyPokemons';
-import WildPokemons from './WildPokemons';
+import MyPokemons from '../components/MyPokemons';
+import WildPokemons from '../components/WildPokemons';
 
 const Dashboard = () => {
   const Wrapper = useBreakpointValue({ base: VStack, md: Flex });

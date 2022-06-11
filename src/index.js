@@ -5,8 +5,8 @@ import App from './App';
 
 //chakraUI
 import { ChakraProvider } from '@chakra-ui/react';
-import { PokemonProvider } from './store/pokemon-context';
-import { LoginProvider } from './store/login-context';
+import { PokemonProvider } from './contexts/pokemon-context';
+import { LoginProvider } from './contexts/login-context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

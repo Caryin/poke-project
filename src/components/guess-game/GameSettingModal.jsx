@@ -1,16 +1,12 @@
-import { useState } from 'react';
-
 import {
+  Button,
+  ModalFooter,
   Radio,
   RadioGroup,
   Stack,
-  ModalFooter,
-  Button,
 } from '@chakra-ui/react';
 
-const SelectGameLevel = ({ startGame, startGameHandler }) => {
-  const [gameLevel, setGameLevel] = useState('medium');
-
+const GameSettingModal = ({ startGameHandler, gameLevel, setGameLevel }) => {
   return (
     <>
       <RadioGroup onChange={setGameLevel} value={gameLevel}>
@@ -27,11 +23,7 @@ const SelectGameLevel = ({ startGame, startGameHandler }) => {
         </Stack>
       </RadioGroup>
       <ModalFooter>
-        <Button
-          onClick={startGameHandler}
-          colorScheme='messenger'
-          value={startGame}
-        >
+        <Button onClick={startGameHandler} colorScheme='messenger'>
           Start
         </Button>
       </ModalFooter>
@@ -39,4 +31,4 @@ const SelectGameLevel = ({ startGame, startGameHandler }) => {
   );
 };
 
-export default SelectGameLevel;
+export default GameSettingModal;

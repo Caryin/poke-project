@@ -4,8 +4,8 @@ import {
   useBreakpointValue,
   VStack,
 } from '@chakra-ui/react';
-import { usePokemon } from '../store/pokemon-context';
-import DashboardItem from './DashboardItem';
+import { usePokemon } from '../contexts/pokemon-context';
+import PokemonCard from './PokemonCard';
 
 const MyPokemons = () => {
   const { myPokemons } = usePokemon();
@@ -23,7 +23,7 @@ const MyPokemons = () => {
       )}
       <SimpleGrid columns={columns} spacing={6}>
         {myPokemons.map((pokemon) => (
-          <DashboardItem key={pokemon.id} data={pokemon} />
+          <PokemonCard key={pokemon.id} data={pokemon} />
         ))}
       </SimpleGrid>
     </VStack>

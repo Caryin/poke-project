@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Catchboard from './components/Catchboard';
-import Dashboard from './components/Dashboard';
-import LoginForm from './components/LoginForm';
+import Catchboard from './pages/Catchboard';
+import Dashboard from './pages/Dashboard';
+import LoginForm from './pages/LoginForm';
 import NavBar from './components/NavBar';
-//store
-import { useLogin } from './store/login-context';
+import { useLogin } from './contexts/login-context';
 
 const AppRoute = () => (
   <BrowserRouter>
