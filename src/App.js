@@ -6,6 +6,7 @@ import LoginForm from './components/LoginForm';
 import NavBar from './components/NavBar';
 //store
 import { useLogin } from './store/login-context';
+import GuessGameModal from './components/guessGame/GuessGameModal';
 
 const AppRoute = () => (
   <BrowserRouter>
@@ -28,7 +29,12 @@ const App = () => {
     }
   }, [isLoggedIn]);
 
-  return <>{isLoggedIn ? <AppRoute /> : <LoginForm />}</>;
+  return (
+    <>
+      {isLoggedIn ? <AppRoute /> : <LoginForm />}
+      <GuessGameModal />
+    </>
+  );
 };
 
 export default App;

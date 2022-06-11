@@ -54,7 +54,7 @@ const Catchboard = () => {
           </VStack>
         )}
         <HStack>
-          <Button colorScheme='telegram' onClick={makeNewAppear}>
+          <Button colorScheme='messenger' onClick={makeNewAppear}>
             Release
           </Button>
           <Button colorScheme='red' onClick={handleCatch}>
