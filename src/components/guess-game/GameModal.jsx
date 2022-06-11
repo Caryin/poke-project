@@ -80,7 +80,6 @@ const GameModal = ({ guessGameSuccessful, onClose, gameLevel }) => {
           <Button w='20%' colorScheme='red' onClick={attemptHandler}>
             Try
           </Button>
-          <Text>the answer is {secretNumber}</Text>
         </>
       )}
       {numOfAttempts === 0 && (
