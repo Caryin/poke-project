@@ -13,15 +13,9 @@ import { usePokemon } from '../contexts/pokemon-context';
 import MainModal from '../components/guess-game/MainModal';
 
 const Catchboard = () => {
-  const { wildPokemons, catchPokemon, getRandomPokemon } = usePokemon();
-  const [appear, setAppear] = useState({});
+  const { wildPokemons, catchPokemon, appear, makeNewAppear } = usePokemon();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
-
-  const makeNewAppear = () => {
-    const newAppear = getRandomPokemon();
-    setAppear(newAppear);
-  };
 
   useEffect(() => {
     makeNewAppear();

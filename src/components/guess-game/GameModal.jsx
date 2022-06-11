@@ -7,6 +7,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import { usePokemon } from '../../contexts/pokemon-context';
 import { GAMESETTING } from './gameSetting';
 
 const GameModal = ({ guessGameSuccessful, onClose, gameLevel }) => {
@@ -15,6 +16,7 @@ const GameModal = ({ guessGameSuccessful, onClose, gameLevel }) => {
   const [secretNumber, setSecretNumber] = useState(1);
   const [userInput, setUserInput] = useState('');
   const toast = useToast();
+  const { makeNewAppear, appear } = usePokemon();
 
   useEffect(() => {
     getSecretNumber();
@@ -51,12 +53,25 @@ const GameModal = ({ guessGameSuccessful, onClose, gameLevel }) => {
     if (userGuess === secretNumber) {
       guessGameSuccessful();
       onClose();
-    } else if (userGuess > secretNumber) {
-      setRange((prev) => ({ ...prev, max: userGuess }));
+    } else {
       setNumOfAttempts((numOfAttempts) => numOfAttempts - 1);
-    } else if (userGuess < secretNumber) {
-      setRange((prev) => ({ ...prev, min: userGuess }));
-      setNumOfAttempts((numOfAttempts) => numOfAttempts - 1);
+      if (numOfAttempts === 1) {
+        toast({
+          title: 'You failed to catch!',
+          description: `${appear.pokemon} has fled`,
+          status: 'warning',
+          duration: 5000,
+          isClosable: false,
+          position: 'top',
+        });
+
+        makeNewAppear();
+      }
+      if (userGuess > secretNumber) {
+        setRange((prev) => ({ ...prev, max: userGuess }));
+      } else if (userGuess < secretNumber) {
+        setRange((prev) => ({ ...prev, min: userGuess }));
+      }
     }
 
     setUserInput('');
@@ -83,12 +98,14 @@ const GameModal = ({ guessGameSuccessful, onClose, gameLevel }) => {
         </>
       )}
       {numOfAttempts === 0 && (
-        <>
-          <Heading size='md' color='red.500'>
-            Opps! You failed to catch.
+        <VStack py={2}>
+          <Heading size='xl' color='#CC0000'>
+            FAILED!
           </Heading>
-          <Text>The correct answer is: {secretNumber}. </Text>
-        </>
+          <Heading size='md' py={3}>
+            The correct answer was: {secretNumber}.
+          </Heading>
+        </VStack>
       )}
     </VStack>
   );

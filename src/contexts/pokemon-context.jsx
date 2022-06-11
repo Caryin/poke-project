@@ -7,6 +7,7 @@ const PokemonContext = createContext({});
 export const PokemonProvider = ({ children }) => {
   const [wildPokemons, setWildPokemons] = useState(PokemonData);
   const [myPokemons, setMyPokemons] = useState([]);
+  const [appear, setAppear] = useState({});
 
   const catchPokemon = (id) => {
     const newWildPokemons = wildPokemons.filter((p) => p.id !== id);
@@ -30,6 +31,11 @@ export const PokemonProvider = ({ children }) => {
     return wildPokemons[randomNumber];
   };
 
+  const makeNewAppear = () => {
+    const newAppear = getRandomPokemon();
+    setAppear(newAppear);
+  };
+
   const value = {
     wildPokemons,
     setWildPokemons,
@@ -38,6 +44,8 @@ export const PokemonProvider = ({ children }) => {
     catchPokemon,
     releasePokemon,
     getRandomPokemon,
+    appear,
+    makeNewAppear,
   };
 
   return (

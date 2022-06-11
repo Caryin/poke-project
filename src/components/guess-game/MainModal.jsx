@@ -12,11 +12,11 @@ import GameModal from './GameModal';
 import GameSettingModal from './GameSettingModal';
 
 const MainModal = ({ isOpen, onClose, guessGameSuccessful }) => {
-  const [startGame, setStartGame] = useState(false);
-  const [gameLevel, setGameLevel] = useState('medium');
+  const [isStarted, setIsStarted] = useState(false);
+  const [gameLevel, setGameLevel] = useState('easy');
 
   const startGameHandler = () => {
-    setStartGame(true);
+    setIsStarted(true);
   };
 
   return (
@@ -25,19 +25,18 @@ const MainModal = ({ isOpen, onClose, guessGameSuccessful }) => {
         isCentered
         onClose={() => {
           onClose();
-          setStartGame(false);
+          setIsStarted(false);
         }}
         isOpen={isOpen}
         motionPreset='slideInBottom'
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Guess Game</ModalHeader>
+          <ModalHeader>Guess the Number</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {!startGame ? (
+            {!isStarted ? (
               <GameSettingModal
-                startGame={startGame}
                 startGameHandler={startGameHandler}
                 gameLevel={gameLevel}
                 setGameLevel={setGameLevel}
