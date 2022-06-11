@@ -1,13 +1,4 @@
-import {
-  Box,
-  CloseButton,
-  Fade,
-  Heading,
-  Spacer,
-  Text,
-  useBreakpointValue,
-  VStack,
-} from '@chakra-ui/react';
+import { CloseButton, Heading, Text, VStack } from '@chakra-ui/react';
 import { usePokemon } from '../store/pokemon-context';
 
 const DashboardItem = ({ data }) => {

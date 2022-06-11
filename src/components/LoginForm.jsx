@@ -1,17 +1,14 @@
 import {
   AspectRatio,
+  Box,
   Button,
   Container,
   Flex,
   FormLabel,
-  GridItem,
   Heading,
   Image,
   Input,
-  SimpleGrid,
   Text,
-  Box,
-  FormControl,
 } from '@chakra-ui/react';
 import loginImage from '../assets/loginImage.png';
 import { useLogin } from '../store/login-context';

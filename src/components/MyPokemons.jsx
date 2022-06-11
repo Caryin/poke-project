@@ -1,7 +1,6 @@
 import {
   Heading,
   SimpleGrid,
-  Text,
   useBreakpointValue,
   VStack,
 } from '@chakra-ui/react';

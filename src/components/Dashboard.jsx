@@ -1,23 +1,7 @@
-//chakraUI
-import {
-  Container,
-  HStack,
-  Image,
-  Heading,
-  VStack,
-  Flex,
-  Spacer,
-  Center,
-  Text,
-  Square,
-  Box,
-  useBreakpointValue,
-} from '@chakra-ui/react';
+import { Flex, Image, useBreakpointValue, VStack } from '@chakra-ui/react';
 
-//asset
 import pokemonLogo from '../assets/pokemon-logo.png';
 
-//components
 import MyPokemons from './MyPokemons';
 import WildPokemons from './WildPokemons';
 

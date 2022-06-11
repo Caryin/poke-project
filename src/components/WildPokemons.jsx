@@ -1,4 +1,3 @@
-//chakraUI
 import { Heading, Text, VStack } from '@chakra-ui/react';
 import { usePokemon } from '../store/pokemon-context';
 
