@@ -1,22 +1,17 @@
-import { useState } from 'react';
 import {
-  Button,
-  Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
-  useDisclosure,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 
-import SelectGameLevel from './SelectGameLevel';
 import PlayGuessGame from './PlayGuessGame';
+import SelectGameLevel from './SelectGameLevel';
 
-const GuessGameModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+const GuessGameModal = ({ isOpen, onClose, guessGameSuccessful }) => {
   const [startGame, setStartGame] = useState(false);
 
   const startGameHandler = () => {
@@ -25,7 +20,6 @@ const GuessGameModal = () => {
 
   return (
     <>
-      <Button onClick={onOpen}>Guess Game</Button>
       <Modal
         isCentered
         onClose={() => {
@@ -46,7 +40,10 @@ const GuessGameModal = () => {
                 startGameHandler={startGameHandler}
               />
             ) : (
-              <PlayGuessGame />
+              <PlayGuessGame
+                guessGameSuccessful={guessGameSuccessful}
+                onClose={onClose}
+              />
             )}
           </ModalBody>
         </ModalContent>

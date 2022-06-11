@@ -4,14 +4,18 @@ import {
   Heading,
   HStack,
   Text,
+  useDisclosure,
   useToast,
   VStack,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { usePokemon } from '../store/pokemon-context';
+import GuessGameModal from './guessGame/GuessGameModal';
 
 const Catchboard = () => {
   const { wildPokemons, catchPokemon, getRandomPokemon } = usePokemon();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const [appear, setAppear] = useState({});
   const toast = useToast();
 
@@ -24,7 +28,7 @@ const Catchboard = () => {
     makeNewAppear();
   }, []);
 
-  const handleCatch = () => {
+  const guessGameSuccessful = () => {
     catchPokemon(appear.id);
     if (wildPokemons.length === 0) {
       return;
@@ -41,28 +45,35 @@ const Catchboard = () => {
   };
 
   return (
-    <Container maxW='container.lg'>
-      <VStack bg='yellow.100' p={20} rounded={20} m={10}>
-        <Heading color='gray.700'>Rare Pokemon appeared!</Heading>
-        {wildPokemons.length > 0 && (
-          <VStack borderRadius={20} p={20} m={10} bg='whiteAlpha.700'>
-            <Heading>{appear.pokemon}</Heading>
-            <Text>Attack: {appear.ATK}</Text>
-            <Text>HP: {appear.HP}</Text>
-            <Text>SP: {appear.SP}</Text>
-            <Text>Type: {appear.Type}</Text>
-          </VStack>
-        )}
-        <HStack>
-          <Button colorScheme='messenger' onClick={makeNewAppear}>
-            Release
-          </Button>
-          <Button colorScheme='red' onClick={handleCatch}>
-            Catch
-          </Button>
-        </HStack>
-      </VStack>
-    </Container>
+    <>
+      <GuessGameModal
+        isOpen={isOpen}
+        onClose={onClose}
+        guessGameSuccessful={guessGameSuccessful}
+      />
+      <Container maxW='container.lg'>
+        <VStack bg='yellow.100' p={20} rounded={20} m={10}>
+          <Heading color='gray.700'>Rare Pokemon appeared!</Heading>
+          {wildPokemons.length > 0 && (
+            <VStack borderRadius={20} p={20} m={10} bg='whiteAlpha.700'>
+              <Heading>{appear.pokemon}</Heading>
+              <Text>Attack: {appear.ATK}</Text>
+              <Text>HP: {appear.HP}</Text>
+              <Text>SP: {appear.SP}</Text>
+              <Text>Type: {appear.Type}</Text>
+            </VStack>
+          )}
+          <HStack>
+            <Button colorScheme='messenger' onClick={makeNewAppear}>
+              Release
+            </Button>
+            <Button colorScheme='red' onClick={onOpen}>
+              Catch
+            </Button>
+          </HStack>
+        </VStack>
+      </Container>
+    </>
   );
 };
 

@@ -8,11 +8,10 @@ const medium = [
   },
 ];
 
-const PlayGuessGame = () => {
+const PlayGuessGame = ({ guessGameSuccessful, onClose }) => {
   const [range, setRange] = useState(medium);
   const [guessValue, setGuessValue] = useState('');
   const [numOfAttempts, setNumOfAttempts] = useState(3);
-  const [isSuccessful, setIsSuccessful] = useState(false);
 
   const guessValueHandler = (e) => {
     setGuessValue(parseInt(e.target.value));
@@ -22,7 +21,8 @@ const PlayGuessGame = () => {
 
   const attemptHandler = () => {
     if (guessValue === randomNum) {
-      setIsSuccessful(true);
+      guessGameSuccessful();
+      onClose();
     } else {
       setNumOfAttempts((numOfAttempts) => numOfAttempts - 1);
     }

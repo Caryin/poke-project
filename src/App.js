@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Catchboard from './components/Catchboard';
 import Dashboard from './components/Dashboard';
 import LoginForm from './components/LoginForm';
 import NavBar from './components/NavBar';
 //store
 import { useLogin } from './store/login-context';
-import GuessGameModal from './components/guessGame/GuessGameModal';
 
 const AppRoute = () => (
   <BrowserRouter>
@@ -29,12 +28,7 @@ const App = () => {
     }
   }, [isLoggedIn]);
 
-  return (
-    <>
-      {isLoggedIn ? <AppRoute /> : <LoginForm />}
-      <GuessGameModal />
-    </>
-  );
+  return <>{isLoggedIn ? <AppRoute /> : <LoginForm />}</>;
 };
 
 export default App;
