@@ -24,7 +24,7 @@ const GameModal = ({ guessGameSuccessful, onClose, gameLevel }) => {
 
   const getSecretNumber = () => {
     const number = range.max - range.min + 1;
-    const random = Math.floor(Math.random() * number);
+    const random = Math.floor(Math.random() * number) + range.min;
     setSecretNumber(random);
   };
 
@@ -68,9 +68,9 @@ const GameModal = ({ guessGameSuccessful, onClose, gameLevel }) => {
         makeNewAppear();
       }
       if (userGuess > secretNumber) {
-        setRange((prev) => ({ ...prev, max: userGuess }));
+        setRange((prev) => ({ ...prev, max: userGuess - 1 }));
       } else if (userGuess < secretNumber) {
-        setRange((prev) => ({ ...prev, min: userGuess }));
+        setRange((prev) => ({ ...prev, min: userGuess + 1 }));
       }
     }
 
