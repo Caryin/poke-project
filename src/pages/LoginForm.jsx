@@ -80,7 +80,7 @@ const LoginForm = () => {
               onChange={usernameChangeHandler}
               onBlur={usernameBlurHandler}
               size='lg'
-              placeholder='Try with test@test.com'
+              placeholder='Try with `test@test.com`'
             />
             {usernameHasError && (
               <Text p={2} color='red'>
@@ -100,7 +100,7 @@ const LoginForm = () => {
               onChange={passwordChangeHandler}
               onBlur={passwordBlurHandler}
               size='lg'
-              placeholder='Try with @12345'
+              placeholder='Try with `@12345`'
             />
             {passwordHasError && (
               <Text p={2} color='red'>
